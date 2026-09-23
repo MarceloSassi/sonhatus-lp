@@ -1,0 +1,814 @@
+/* ============================================================
+   SONHATUS · main.css
+   1. Tokens
+   2. Base
+   3. Céu fixo (background)
+   4. Layout
+   5. Tipografia
+   6. Liquid glass
+   7. Componentes
+   8. Animações
+   9. Acessibilidade e responsivo
+   ============================================================ */
+
+/* 1. Tokens ------------------------------------------------- */
+:root {
+  --night-900: #070417;
+  --night-800: #0d0730;
+  --night-700: #180b4a;
+  --violet-600: #4a22c9;
+  --violet-400: #7c4dff;
+  --lilac-300: #b79cff;
+  --rose-200: #f6c6e8;
+  --rose-vivid: #ff8fd8;
+
+  --ink-100: #ffffff;
+  --ink-200: #ffffff;
+  --ink-300: #bcaee0;
+
+  --glass-face: linear-gradient(148deg, rgba(255, 255, 255, .14) 0%, rgba(255, 255, 255, .05) 42%, rgba(124, 77, 255, .08) 100%);
+  --glass-edge: rgba(255, 255, 255, .16);
+  --glass-blur: blur(22px) saturate(165%);
+  --glass-shadow: 0 1px 0 rgba(255, 255, 255, .24) inset, 0 -1px 0 rgba(255, 255, 255, .06) inset, 0 28px 60px -28px rgba(4, 2, 18, .9);
+
+  --silver: linear-gradient(104deg, #ffffff 0%, #cfd6e6 38%, #8f98b4 58%, #ffffff 92%);
+
+  --radius-lg: 28px;
+  --radius-md: 18px;
+  --radius-sm: 12px;
+
+  --shell: 1180px;
+  --shell-narrow: 780px;
+
+  --ease-out: cubic-bezier(.16, 1, .3, 1);
+
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+/* 2. Base --------------------------------------------------- */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100%;
+  background-color: var(--night-900);
+  color: var(--ink-100);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--lilac-300);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* 3. Céu fixo ----------------------------------------------- */
+.sky,
+.sky-veil {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+.sky {
+  z-index: -2;
+  background-image: url("../img/background-mobile.webp");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+
+.sky-veil {
+  z-index: -1;
+  background:
+    radial-gradient(120% 70% at 50% 0%, rgba(7, 4, 23, .72) 0%, rgba(7, 4, 23, .18) 55%, rgba(7, 4, 23, 0) 100%),
+    linear-gradient(180deg, rgba(7, 4, 23, .55) 0%, rgba(13, 7, 48, .28) 45%, rgba(7, 4, 23, .62) 100%);
+}
+
+/* 4. Layout ------------------------------------------------- */
+.shell {
+  width: 100%;
+  max-width: var(--shell);
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 5vw, 2.5rem);
+}
+
+.shell--narrow {
+  max-width: var(--shell-narrow);
+}
+
+.section {
+  position: relative;
+  padding-block: clamp(4rem, 11vw, 7.5rem);
+}
+
+.section--hero {
+  padding-top: clamp(1.8rem, 7.2vw, 3.6rem);
+  padding-bottom: clamp(1.5rem, 5vw, 3rem);
+}
+
+.section--cta {
+  padding-bottom: clamp(5rem, 12vw, 8rem);
+}
+
+.site-footer {
+  padding-block: 3rem 4rem;
+  padding-bottom: calc(4rem + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid rgba(255, 255, 255, .08);
+}
+
+/* 5. Tipografia --------------------------------------------- */
+.brand {
+  font-size: .95rem;
+  font-weight: 600;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  background: var(--silver);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.eyebrow {
+  margin: 0 0 .9rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.32;
+  color: var(--rose-200);
+}
+
+.display {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 7vw, 4.1rem);
+  line-height: 1.04;
+  letter-spacing: -.015em;
+  font-weight: 600;
+  text-wrap: balance;
+}
+
+.h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 3.6vw, 2.4rem);
+  line-height: 1.16;
+  letter-spacing: -.01em;
+  font-weight: 600;
+  text-wrap: balance;
+  text-align: center;
+}
+
+.lede {
+  font-size: clamp(1.32rem, 2.53vw, 1.52rem);
+  line-height: 1.32;
+  color: var(--ink-200);
+  max-width: 48ch;
+}
+
+.body {
+  font-size: 1.29rem;
+  line-height: 1.32;
+  color: var(--ink-200);
+  max-width: 62ch;
+}
+
+.body--center {
+  margin-inline: auto;
+}
+
+.h2 + .body {
+  text-align: center;
+  margin-inline: auto;
+}
+
+.note {
+  font-size: .92rem;
+  line-height: 1.32;
+  text-align: center;
+  color: var(--ink-300);
+}
+
+.text-highlight {
+  color: var(--rose-200);
+}
+
+/* 6. Liquid glass ------------------------------------------- */
+.panel,
+.card,
+.offer,
+.faq {
+  position: relative;
+  background-image: var(--glass-face);
+  border: 1px solid var(--glass-edge);
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  isolation: isolate;
+  overflow: hidden;
+  text-align: center;
+}
+
+.panel::before,
+.card::before,
+.offer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(90% 60% at 12% 0%, rgba(255, 255, 255, .22) 0%, rgba(255, 255, 255, 0) 60%),
+    radial-gradient(70% 50% at 100% 100%, rgba(124, 77, 255, .22) 0%, rgba(124, 77, 255, 0) 70%);
+}
+
+.panel {
+  border-radius: var(--radius-lg);
+  padding: clamp(1.75rem, 5vw, 3rem);
+}
+
+.panel--cta {
+  padding-block: clamp(2.5rem, 7vw, 4rem);
+}
+
+.panel--soft {
+  padding: clamp(1.5rem, 4vw, 2.2rem);
+}
+
+.card {
+  border-radius: var(--radius-lg);
+  padding: clamp(1.5rem, 4vw, 2rem);
+}
+
+.card--tall {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card--feature {
+  display: flex;
+  flex-direction: column;
+}
+
+.card--product {
+  background-image: url("../img/frasco-2.webp");
+  background-size: cover;
+  background-position: top center;
+  justify-content: flex-end;
+  min-height: 175vw;
+}
+
+.card__title {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--ink-100);
+}
+
+.card__text {
+  margin: .8rem 0 0;
+  font-size: 1.22rem;
+  line-height: 1.32;
+  color: var(--ink-200);
+}
+
+/* 7. Componentes -------------------------------------------- */
+
+/* 7.1 Ícones */
+.icon-sprite {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.icon {
+  flex: 0 0 auto;
+  width: 1.3rem;
+  height: 1.3rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.icon--lg {
+  width: 1.65rem;
+  height: 1.65rem;
+}
+
+.icon-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 1.35rem;
+  border: 1px solid var(--glass-edge);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, .07);
+  color: var(--rose-vivid);
+}
+
+/* 7.2 Botões */
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .6rem;
+  min-height: 52px;
+  padding: .9rem 1.6rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: .98rem;
+  font-weight: 600;
+  letter-spacing: .01em;
+  text-align: center;
+  cursor: pointer;
+  transition: transform .25s var(--ease-out), opacity .2s linear;
+}
+
+.btn--primary {
+  color: #0b0524;
+  background-image: var(--silver);
+  box-shadow: 0 14px 34px -14px rgba(183, 156, 255, .9);
+}
+
+.btn--ghost {
+  color: var(--ink-100);
+  background-image: var(--glass-face);
+  border-color: var(--glass-edge);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+}
+
+.btn--sm {
+  min-height: 44px;
+  padding: .55rem 1.1rem;
+  font-size: .85rem;
+}
+
+.btn--lg {
+  min-height: 62px;
+  padding: 1.05rem 2.1rem;
+  font-size: clamp(1.02rem, 2.1vw, 1.16rem);
+}
+
+.btn--block {
+  width: 100%;
+  margin-top: auto;
+}
+
+.btn--glow::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 0 26px 5px rgba(183, 156, 255, .55);
+  opacity: .4;
+  pointer-events: none;
+  animation: halo 3.6s ease-in-out infinite;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn--lg:hover {
+  transform: translateY(-3px) scale(1.015);
+}
+
+.btn--glow:hover::after {
+  opacity: .9;
+  animation: none;
+}
+
+.btn:active {
+  transform: translateY(0);
+  opacity: .9;
+}
+
+/* 7.3 Hero: copy, imagem do produto e marcadores */
+.hero-copy {
+  text-align: center;
+}
+
+.hero-figure {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-image {
+  width: 100%;
+  max-width: 180px;
+}
+
+.hero-marks {
+  display: grid;
+  justify-items: center;
+  gap: .7rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.hero-mark {
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  font-size: 1.09rem;
+  font-weight: 700;
+  line-height: 1.32;
+  text-align: left;
+  color: var(--rose-vivid);
+}
+
+.hero-mark .icon {
+  color: var(--rose-vivid);
+}
+
+/* 7.4 Listas com marcador */
+.ticks {
+  display: grid;
+  justify-items: center;
+  gap: .85rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.tick {
+  display: flex;
+  align-items: flex-start;
+  gap: .7rem;
+  font-size: 1.09rem;
+  line-height: 1.32;
+  text-align: left;
+  color: var(--ink-200);
+}
+
+.tick .icon {
+  margin-top: .1rem;
+  color: var(--rose-vivid);
+}
+
+.tick--best {
+  padding: .85rem 1.1rem;
+  border-radius: var(--radius-md);
+  background: rgba(255, 143, 216, .14);
+  border: 1px solid rgba(255, 143, 216, .4);
+}
+
+.tick--best strong {
+  color: var(--rose-vivid);
+}
+
+.ticks--stacked .tick {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: .35rem;
+}
+
+.ticks--stacked .tick strong {
+  font-size: 1.15rem;
+}
+
+/* 7.5 Passos */
+.steps {
+  display: grid;
+  gap: 1.25rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.step {
+  padding-top: clamp(1.5rem, 4vw, 2rem);
+}
+
+.step::after {
+  content: attr(data-step);
+  position: absolute;
+  right: -.5rem;
+  top: -1.5rem;
+  z-index: -1;
+  font-family: var(--font-serif);
+  font-size: 10rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--ink-100);
+  opacity: .14;
+  pointer-events: none;
+}
+
+/* 7.6 Prova social */
+.quote {
+  margin: 0;
+  font-size: 1.17rem;
+  line-height: 1.32;
+  color: var(--ink-100);
+}
+
+.byline {
+  margin-top: 1.25rem;
+  font-size: .94rem;
+  line-height: 1.32;
+  color: var(--ink-300);
+}
+
+/* 7.7 Fórmula */
+.formula {
+  margin: 0;
+  display: grid;
+  gap: 0;
+  text-align: left;
+}
+
+.formula__row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: .95rem;
+  border-bottom: 1px solid rgba(255, 255, 255, .1);
+}
+
+.formula__row:last-child {
+  border-bottom: 0;
+}
+
+.formula dt {
+  font-size: 1.15rem;
+  color: var(--ink-100);
+}
+
+.formula dd {
+  margin: 0;
+  font-size: 1.15rem;
+  font-variant-numeric: tabular-nums;
+  background: var(--silver);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* 7.9 Oferta */
+.offer {
+  display: flex;
+  flex-direction: column;
+  gap: .6rem;
+  border-radius: var(--radius-lg);
+  padding: clamp(1.6rem, 4vw, 2.2rem);
+  order: 0;
+}
+
+.offer--best {
+  order: -1;
+  border-color: rgba(231, 220, 255, .42);
+  box-shadow: var(--glass-shadow), 0 0 0 1px rgba(183, 156, 255, .22), 0 0 44px -10px rgba(183, 156, 255, .45);
+}
+
+.offer__image {
+  width: 100%;
+  max-width: 220px;
+  align-self: center;
+  margin-bottom: .5rem;
+  border-radius: var(--radius-md);
+}
+
+.offer__flag {
+  align-self: center;
+  margin: 0 0 .4rem;
+  border-radius: 999px;
+  padding: .3rem .8rem;
+  font-size: .85rem;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  background: var(--rose-200);
+  color: var(--night-800);
+}
+
+.offer__flag--best {
+  letter-spacing: .08em;
+}
+
+.offer__title {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.offer__desc {
+  margin: 0;
+  font-size: 1.21rem;
+  line-height: 1.32;
+  color: #fff;
+}
+
+.offer__from {
+  margin: 1rem 0 0;
+  font-size: .94rem;
+  font-weight: 700;
+  line-height: 1.32;
+  color: #fff;
+}
+
+.offer__price {
+  margin: .2rem 0 .1rem;
+  font-family: var(--font-serif);
+  font-size: clamp(2.3rem, 5.5vw, 3rem);
+  font-weight: 600;
+  letter-spacing: -.01em;
+  font-variant-numeric: tabular-nums;
+  color: var(--rose-vivid);
+}
+
+.offer__unit {
+  margin: 0;
+  font-size: .97rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.offer__list {
+  margin: 1.3rem 0 1.8rem;
+}
+
+/* 7.10 FAQ */
+.faq {
+  border-radius: var(--radius-lg);
+  padding: .5rem clamp(1rem, 3vw, 1.6rem);
+}
+
+.faq__item + .faq__item {
+  border-top: 1px solid rgba(255, 255, 255, .1);
+}
+
+.faq h3 {
+  margin: 0;
+}
+
+.faq__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  min-height: 56px;
+  padding-block: 1.1rem;
+  border: 0;
+  background: none;
+  color: var(--ink-100);
+  font-family: inherit;
+  font-size: 1.15rem;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+}
+
+.faq__icon {
+  flex: 0 0 auto;
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 8px solid var(--rose-vivid);
+  transition: transform .3s var(--ease-out);
+}
+
+.faq__trigger[aria-expanded="true"] .faq__icon {
+  transform: rotate(180deg);
+}
+
+.faq__panel {
+  overflow: hidden;
+  height: 0;
+  transition: height .35s var(--ease-out);
+}
+
+.faq__panel p {
+  margin: 0;
+  padding-bottom: 1.3rem;
+  font-size: 1.22rem;
+  line-height: 1.32;
+  color: var(--ink-200);
+  max-width: 62ch;
+}
+
+/* 8. Animações ---------------------------------------------- */
+.reveal {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+  transition: opacity .9s var(--ease-out), transform .9s var(--ease-out);
+  will-change: opacity, transform;
+}
+
+.reveal--d1 {
+  transition-delay: .1s;
+}
+
+.reveal--d2 {
+  transition-delay: .2s;
+}
+
+.reveal--d3 {
+  transition-delay: .3s;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  will-change: auto;
+}
+
+@keyframes halo {
+  0%, 100% { opacity: .35; }
+  50% { opacity: .78; }
+}
+
+/* 9. Acessibilidade e responsivo ----------------------------- */
+@media (min-width: 768px) {
+  .sky {
+    background-image: url("../img/background-desktop.webp");
+  }
+
+  .hero-copy {
+    text-align: left;
+  }
+
+  .hero-marks {
+    justify-items: start;
+  }
+
+  .steps {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .offer--best {
+    order: 0;
+  }
+
+  .card--product {
+    min-height: 45vw;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-image {
+    max-width: 420px;
+  }
+
+  .section {
+    padding-block: clamp(3rem, 6vw, 4.5rem);
+  }
+
+  .section--hero {
+    padding-top: clamp(1.8rem, 7.2vw, 3.6rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    transition-delay: 0s;
+  }
+
+  .btn--glow::after {
+    animation: none;
+  }
+
+  .btn,
+  .faq__panel,
+  .faq__icon {
+    transition: none;
+  }
+}
