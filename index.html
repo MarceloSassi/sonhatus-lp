@@ -26,6 +26,7 @@
 
 <div class="sky" aria-hidden="true"></div>
 <div class="sky-veil" aria-hidden="true"></div>
+<div class="sky-stars" aria-hidden="true"></div>
 
 <svg class="icon-sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
   <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.2 14.6A8.6 8.6 0 0 1 9.4 3.8a8.6 8.6 0 1 0 10.8 10.8Z"/><path d="M17.4 4.2v2.6M16.1 5.5h2.6"/></symbol>
@@ -39,7 +40,35 @@
   <symbol id="i-home" viewBox="0 0 24 24"><path d="M4 11.2 12 4l8 7.2V19a1.4 1.4 0 0 1-1.4 1.4h-3.2v-5.6H8.6v5.6H5.4A1.4 1.4 0 0 1 4 19Z"/></symbol>
   <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="4" y="5.5" width="16" height="14" rx="2"/><path d="M4 9.5h16M8 3.5v3M16 3.5v3"/></symbol>
   <symbol id="i-restart" viewBox="0 0 24 24"><path d="M4.5 12a7.5 7.5 0 1 1 2.4 6.1"/><path d="M4.5 16v-4h4"/></symbol>
+  <filter id="glass-refraction" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+    <feTurbulence type="fractalNoise" baseFrequency="0.006 0.009" numOctaves="2" seed="4" result="noise"/>
+    <feGaussianBlur in="noise" stdDeviation="3" result="map"/>
+    <feDisplacementMap in="SourceGraphic" in2="map" scale="36" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
 </svg>
+
+<header class="site-nav" data-nav>
+  <div class="site-nav__bar">
+    <button type="button" class="site-nav__toggle" aria-expanded="false" aria-controls="site-nav-menu" aria-label="Abrir menu" data-nav-toggle>
+      <span class="site-nav__burger" aria-hidden="true"></span>
+    </button>
+
+    <a href="#hero" class="site-nav__logo">Sonhatus</a>
+
+    <nav id="site-nav-menu" class="site-nav__menu" aria-label="Seções da página">
+      <ul class="site-nav__list">
+        <li><a href="#beneficios" class="site-nav__link">Benefícios</a></li>
+        <li><a href="#para-quem" class="site-nav__link">Para quem é</a></li>
+        <li><a href="#formula" class="site-nav__link">Composição</a></li>
+        <li><a href="#rotina" class="site-nav__link">Rotina</a></li>
+        <li><a href="#oferta" class="site-nav__link">Ofertas</a></li>
+        <li><a href="#faq" class="site-nav__link">FAQ</a></li>
+      </ul>
+    </nav>
+
+    <a href="#oferta" class="btn btn--primary site-nav__cta">COMPRAR</a>
+  </div>
+</header>
 
 <main>
 
@@ -56,17 +85,17 @@
       </figure>
 
       <div class="order-2 lg:order-1 lg:col-span-7 hero-copy">
-        <h1 class="display reveal">Sua noite. <span class="text-highlight">Seu ritual.</span></h1>
+        <h1 class="display reveal">De volta às noites <span class="text-highlight">mais tranquilas.</span></h1>
         <p class="lede mt-5 reveal reveal--d1">
-          Uma fórmula com melatonina, magnésio, L-triptofano e vitaminas B3, B6 e B12, pensada para o seu ritual da noite.
+          Melatonina, magnésio, L-triptofano e vitaminas B3, B6 e B12 em uma cápsula só.
         </p>
 
         <a href="#oferta" class="btn btn--primary btn--lg btn--glow mt-6 reveal reveal--d2">QUERO MEU SONHATUS</a>
 
         <ul class="hero-marks mt-14 reveal reveal--d3">
           <li class="hero-mark"><svg class="icon" aria-hidden="true"><use href="#i-capsule"></use></svg>30 cápsulas por frasco</li>
-          <li class="hero-mark"><svg class="icon" aria-hidden="true"><use href="#i-list"></use></svg>Fórmula em um único produto</li>
-          <li class="hero-mark"><svg class="icon" aria-hidden="true"><use href="#i-moon"></use></svg>Pensado para o fim do dia</li>
+          <li class="hero-mark"><svg class="icon" aria-hidden="true"><use href="#i-list"></use></svg>Tudo em uma única cápsula</li>
+          <li class="hero-mark"><svg class="icon" aria-hidden="true"><use href="#i-moon"></use></svg>Feito para o momento em que o dia desacelera</li>
         </ul>
 
         <p class="note mt-6 reveal reveal--d3">Suplemento alimentar. Leia as orientações de consumo e advertências do produto.</p>
@@ -78,16 +107,15 @@
   <!-- CONTEXTO -->
   <section id="contexto" class="section">
     <div class="shell">
-      <div class="panel reveal">
-        <p class="eyebrow">O fim do dia</p>
-        <h2 class="h2">Durante o dia, quase tudo tem hora marcada. <span class="text-highlight">À noite, quase nada.</span></h2>
-        <p class="body mt-5">
-          Hora de acordar, de trabalhar, de responder. Só o fim do dia não tem hora marcada: a luz e a
-          tela continuam ligadas, e a transição nunca acontece.
+      <div class="panel panel--dusk reveal">
+        <h2 class="h2">Durante o dia, quase tudo tem hora marcada. <span class="text-highlight">Pra desacelerar, ninguém agenda nada.</span></h2>
+        <p class="body body--center mt-5">
+          Hora de acordar, de trabalhar, de responder mensagem. O dia inteiro segue um roteiro. Só na
+          hora de parar é que tudo trava: a tela continua acesa e a cabeça não sabe que já pode desligar.
         </p>
-        <p class="body mt-4">
-          <strong><em>Sonhatus</em></strong> nasce dessa lacuna: um produto encapsulado, uma composição
-          objetiva e um gesto simples de repetir todos os dias.
+        <p class="body body--center mt-4">
+          É pra esse momento que existe <strong><em>Sonhatus</em></strong>: um produto encapsulado, uma
+          composição objetiva e um gesto simples de repetir todos os dias.
         </p>
         <a href="#oferta" class="btn btn--primary btn--lg btn--glow mt-8">QUERO MEU SONHATUS</a>
       </div>
@@ -98,29 +126,21 @@
   <section id="beneficios" class="section">
     <div class="shell">
       <p class="eyebrow reveal">Por que <strong><em>Sonhatus</em></strong></p>
-      <h2 class="h2 reveal reveal--d1">O que muda quando o ritual <span class="text-highlight">fica simples.</span></h2>
+      <h2 class="h2 reveal reveal--d1">O que muda quando você tira <span class="text-highlight">a complicação do caminho.</span></h2>
       <p class="body mt-5 reveal reveal--d1">
-        Um ritual que exige muitos passos dura poucos dias. Toda a construção do <strong><em>SONHATUS</em></strong> parte
-        do caminho oposto: menos etapas, menos decisões e mais chance de constância.
+        Você já deve ter tentado montar uma rotina noturna com três produtos e quatro passos e desistido
+        na segunda semana. <strong><em>SONHATUS</em></strong> parte do caminho oposto: menos etapas, menos
+        decisões e mais chance de a rotina realmente pegar.
       </p>
 
-      <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+      <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3 lg:w-4/5 lg:mx-auto">
 
         <article class="card card--feature reveal">
           <span class="icon-badge"><svg class="icon icon--lg" aria-hidden="true"><use href="#i-spark"></use></svg></span>
           <h3 class="card__title">Praticidade real</h3>
           <p class="card__text">
-            Nada de organizar vários frascos diferentes. Uma fórmula encapsulada, pronta para entrar
-            no fim do dia conforme as recomendações do rótulo.
-          </p>
-        </article>
-
-        <article class="card card--feature reveal reveal--d1">
-          <span class="icon-badge"><svg class="icon icon--lg" aria-hidden="true"><use href="#i-list"></use></svg></span>
-          <h3 class="card__title">Composição transparente</h3>
-          <p class="card__text">
-            Todos os ativos e suas quantidades estão declarados nesta página e no rótulo. Você sabe
-            exatamente o que está escolhendo antes de comprar.
+            Chega de abrir três potes diferentes antes de dormir. Uma fórmula encapsulada, pronta para
+            entrar no fim do dia conforme as recomendações do rótulo.
           </p>
         </article>
 
@@ -137,8 +157,8 @@
           <span class="icon-badge"><svg class="icon icon--lg" aria-hidden="true"><use href="#i-check"></use></svg></span>
           <h3 class="card__title">Feito para a constância</h3>
           <p class="card__text">
-            Uma cápsula, um gesto, todos os dias. Quanto menor a fricção, maior a chance de o hábito
-            sobreviver à segunda semana.
+            Uma cápsula, um gesto, todos os dias. Quanto mais simples o passo, maior a chance de o
+            hábito sobreviver além da primeira semana.
           </p>
         </article>
 
@@ -149,7 +169,7 @@
       </div>
 
       <p class="note mt-6 reveal">
-        <strong><em>SONHATUS</em></strong> é um suplemento alimentar. Esta página não descreve resultado clínico, tratamento,
+        <strong><em>SONHATUS</em></strong> é um suplemento alimentar. Este conteúdo não descreve resultado clínico, tratamento,
         prevenção ou cura de qualquer condição de saúde.
       </p>
     </div>
@@ -159,12 +179,12 @@
   <section id="para-quem" class="section">
     <div class="shell grid gap-6 lg:grid-cols-12 lg:items-start">
 
-      <div class="lg:col-span-5 reveal text-center">
+      <div class="lg:col-span-5 reveal text-center lg:text-left audience-intro">
         <p class="eyebrow">Para quem é</p>
-        <h2 class="h2"><strong><em>Sonhatus</em></strong> foi desenhado para quem quer <span class="text-highlight">simplificar o fim do dia.</span></h2>
+        <h2 class="h2"><strong><em>Sonhatus</em></strong> é pra quem já cansou de <span class="text-highlight">complicar o fim do dia.</span></h2>
         <p class="body mt-5">
           Não é um produto para todo mundo, e essa clareza faz parte da proposta. Ele foi pensado
-          para adultos que já entenderam que a noite também precisa de rotina e preferem resolver
+          para adultos que já perceberam que a noite também merece cuidado e preferem resolver
           isso com um único produto.
         </p>
         <a href="#oferta" class="btn btn--primary btn--lg btn--glow mt-8">QUERO MEU SONHATUS</a>
@@ -175,30 +195,30 @@
         <article class="card reveal">
           <span class="icon-badge"><svg class="icon icon--lg" aria-hidden="true"><use href="#i-calendar"></use></svg></span>
           <h3 class="card__title">Quem tem a agenda cheia</h3>
-          <p class="card__text">Profissionais que encerram o dia tarde e querem um ritual objetivo, sem ritual complicado.</p>
+          <p class="card__text">Você fecha o dia tarde e ainda quer um ritual objetivo, sem que ele vire mais uma tarefa na lista.</p>
         </article>
 
         <article class="card reveal reveal--d1">
           <span class="icon-badge"><svg class="icon icon--lg" aria-hidden="true"><use href="#i-home"></use></svg></span>
           <h3 class="card__title">Quem cuida da rotina em casa</h3>
-          <p class="card__text">Pessoas que organizam a casa até o último minuto e quase nunca reservam um momento próprio.</p>
+          <p class="card__text">Você organiza a casa até o último minuto e quase nunca sobra um momento só seu.</p>
         </article>
 
         <article class="card reveal reveal--d2">
           <span class="icon-badge"><svg class="icon icon--lg" aria-hidden="true"><use href="#i-capsule"></use></svg></span>
           <h3 class="card__title">Quem já suplementa</h3>
-          <p class="card__text">Quem busca reunir melatonina, magnésio, L-triptofano e vitaminas do complexo B em um só frasco.</p>
+          <p class="card__text">Você prefere reunir melatonina, magnésio, L-triptofano e vitaminas do complexo B em um só frasco, em vez de vários.</p>
         </article>
 
         <article class="card reveal reveal--d3">
           <span class="icon-badge"><svg class="icon icon--lg" aria-hidden="true"><use href="#i-moon"></use></svg></span>
           <h3 class="card__title">Quem quer criar o hábito</h3>
-          <p class="card__text">Quem já tentou montar uma rotina noturna, não conseguiu manter e quer uma versão mais simples.</p>
+          <p class="card__text">Você já tentou montar uma rotina noturna, não conseguiu manter e quer uma versão bem mais simples dessa vez.</p>
         </article>
 
       </div>
 
-      <div class="lg:col-span-12 panel panel--soft reveal">
+      <div class="lg:col-span-12 panel panel--soft panel--fill reveal">
         <h3 class="card__title">Para quem <strong><em>Sonhatus</em></strong> não é</h3>
         <ul class="ticks mt-4">
           <li class="tick"><svg class="icon" aria-hidden="true"><use href="#i-shield"></use></svg>Menores de idade, gestantes e lactantes, conforme as restrições do rótulo aprovado.</li>
@@ -213,10 +233,10 @@
   <!-- FÓRMULA -->
   <section id="formula" class="section">
     <div class="shell flex justify-center">
-      <div class="panel reveal md:w-1/2">
+      <div class="panel panel--fill reveal md:w-1/2">
         <p class="eyebrow">Composição</p>
-        <h2 class="h2">A fórmula <strong><em>Sonhatus</em></strong>,<br><span class="text-highlight">declarada por inteiro.</span></h2>
-        <p class="body mt-5">Uma composição reunida em um único produto, com 30 cápsulas por frasco.</p>
+        <h2 class="h2">A fórmula <strong><em>Sonhatus</em></strong>,<br><span class="text-highlight">sem letras miúdas.</span></h2>
+        <p class="body mt-5">Tudo o que está na cápsula, reunido em um único produto, com 30 cápsulas por frasco.</p>
 
         <dl class="formula mt-8">
           <div class="formula__row"><dt>Melatonina</dt><dd>210 mcg</dd></div>
@@ -237,26 +257,26 @@
   <section id="rotina" class="section">
     <div class="shell">
       <p class="eyebrow reveal">Como incluir na rotina</p>
-      <h2 class="h2 reveal reveal--d1">Três passos, <span class="text-highlight">sempre iguais.</span></h2>
+      <h2 class="h2 reveal reveal--d1">Três passos. <span class="text-highlight">Sempre os mesmos.</span></h2>
 
-      <ol class="steps mt-16">
+      <ol class="steps mt-12 md:mt-16">
 
         <li class="card step reveal" data-step="1">
           <span class="icon-badge"><svg class="icon icon--lg" aria-hidden="true"><use href="#i-clock"></use></svg></span>
           <h3 class="card__title">Escolha o horário</h3>
-          <p class="card__text">Defina um momento fixo do seu fim de dia, o mesmo todos os dias, e siga a recomendação de consumo do rótulo.</p>
+          <p class="card__text">Defina um horário fixo no seu fim de dia, sempre o mesmo, e siga a recomendação de consumo que está no rótulo.</p>
         </li>
 
         <li class="card step reveal reveal--d1" data-step="2">
           <span class="icon-badge"><svg class="icon icon--lg" aria-hidden="true"><use href="#i-moon"></use></svg></span>
           <h3 class="card__title">Baixe os estímulos</h3>
-          <p class="card__text">Menos luz, menos telas, menos notificações. O ambiente faz parte do ritual tanto quanto o produto.</p>
+          <p class="card__text">Diminua a luz, guarde o celular, silencie as notificações. O ambiente pesa no ritual tanto quanto o produto.</p>
         </li>
 
         <li class="card step reveal reveal--d2" data-step="3">
           <span class="icon-badge"><svg class="icon icon--lg" aria-hidden="true"><use href="#i-restart"></use></svg></span>
           <h3 class="card__title">Repita</h3>
-          <p class="card__text">A constância é o que transforma uma decisão isolada em rotina. Por isso o kit com mais frascos costuma fazer sentido.</p>
+          <p class="card__text">É a repetição que transforma uma decisão isolada em rotina. Por isso o kit com mais frascos costuma facilitar essa continuidade.</p>
         </li>
 
       </ol>
@@ -274,8 +294,8 @@
       <div class="card card--tall card--product reveal md:w-1/2">
         <h2 class="h2">O que você encontra <span class="text-highlight">no frasco.</span></h2>
         <p class="body mt-5">
-          Um suplemento alimentar encapsulado com melatonina, magnésio, L-triptofano
-          e vitaminas B3, B6 e B12, pensado para ser fácil de incluir no fim do dia.
+          Uma cápsula só, com melatonina, magnésio, L-triptofano e vitaminas B3, B6 e B12,
+          pensada para ser fácil de encaixar no fim do seu dia.
         </p>
         <ul class="ticks mt-4">
           <li class="tick"><svg class="icon" aria-hidden="true"><use href="#i-capsule"></use></svg>30 cápsulas por frasco</li>
@@ -327,55 +347,58 @@
   <!-- OFERTA -->
   <section id="oferta" class="section">
     <div class="shell">
-      <h2 class="h2 reveal">Escolha a opção que <span class="text-highlight">faz mais sentido para você.</span></h2>
+      <h2 class="h2 reveal">Qual dessas opções <span class="text-highlight">encaixa melhor no seu momento?</span></h2>
       <p class="body mt-5 reveal reveal--d1">
-        São três opções, sem planos escondidos e sem letras miúdas. A diferença entre elas está apenas
-        na quantidade de frascos e no valor proporcional de cada um.
+        São três jeitos de começar, sem plano escondido e sem letra miúda. A diferença entre eles está
+        apenas na quantidade de frascos e no valor proporcional de cada um.
       </p>
 
-      <div class="mt-10 grid gap-5 md:grid-cols-3 md:items-stretch">
+      <div class="mt-10 grid auto-rows-fr gap-5 md:grid-cols-3 md:items-stretch">
 
         <article class="offer reveal">
-          <img src="assets/img/1-frasco.webp" alt="1 frasco de Sonhatus" width="800" height="999" loading="lazy" decoding="async" class="offer__image">
-          <h3 class="offer__title">1 frasco</h3>
-          <p class="offer__desc">30 cápsulas. Para conhecer e incluir <strong><em>Sonhatus</em></strong> na sua rotina.</p>
-          <p class="offer__price">R$ 79,90</p>
-          <p class="offer__unit">R$ 79,90 por frasco</p>
-          <ul class="ticks offer__list">
-            <li class="tick"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>30 cápsulas</li>
-            <li class="tick"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>Compra individual</li>
-          </ul>
-          <a href="[LINK_CHECKOUT_1_FRASCO]" class="btn btn--ghost btn--lg btn--block">QUERO MEU SONHATUS</a>
+          <img src="assets/img/1unidade.webp" alt="1 frasco de Sonhatus" width="760" height="760" loading="lazy" decoding="async" class="offer__image">
+          <div class="offer__body">
+            <h3 class="offer__title">1 frasco</h3>
+            <p class="offer__price">R$ 79,90</p>
+            <p class="offer__unit">R$ 79,90 por frasco</p>
+            <ul class="ticks offer__list">
+              <li class="tick"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>30 cápsulas</li>
+              <li class="tick"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>Compra individual</li>
+            </ul>
+            <a href="[LINK_CHECKOUT_1_FRASCO]" class="btn btn--ghost btn--lg btn--block">QUERO MEU SONHATUS</a>
+          </div>
         </article>
 
         <article class="offer offer--best reveal reveal--d1">
           <p class="offer__flag offer__flag--best">Mais vendido</p>
-          <img src="assets/img/3-frascos.webp" alt="Kit com 3 frascos de Sonhatus" width="900" height="1124" loading="lazy" decoding="async" class="offer__image">
-          <h3 class="offer__title">Kit com 3 frascos</h3>
-          <p class="offer__desc">90 cápsulas no total. Para quem quer manter a rotina sem recomprar a cada mês.</p>
-          <p class="offer__from">De R$ 239,70 por</p>
-          <p class="offer__price">R$ 189,90</p>
-          <p class="offer__unit">R$ 63,30 por frasco</p>
-          <ul class="ticks offer__list">
-            <li class="tick"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>90 cápsulas</li>
-            <li class="tick"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>Melhor valor proporcional</li>
-            <li class="tick"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>Menos recompras no ano</li>
-          </ul>
-          <a href="[LINK_CHECKOUT_KIT_3]" class="btn btn--primary btn--lg btn--glow btn--block">QUERO MEU SONHATUS</a>
+          <img src="assets/img/3unidades.webp" alt="Kit com 3 frascos de Sonhatus" width="1000" height="1000" loading="lazy" decoding="async" class="offer__image">
+          <div class="offer__body">
+            <h3 class="offer__title">Kit com 3 frascos</h3>
+            <p class="offer__from">De R$ 239,70 por</p>
+            <p class="offer__price">R$ 189,90</p>
+            <p class="offer__unit">R$ 63,30 por frasco</p>
+            <ul class="ticks offer__list">
+              <li class="tick"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>90 cápsulas</li>
+              <li class="tick"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>Melhor valor proporcional</li>
+              <li class="tick"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>Menos recompras no ano</li>
+            </ul>
+            <a href="[LINK_CHECKOUT_KIT_3]" class="btn btn--primary btn--lg btn--glow btn--block">QUERO MEU SONHATUS</a>
+          </div>
         </article>
 
         <article class="offer reveal reveal--d2">
-          <img src="assets/img/2-frascos.webp" alt="Kit com 2 frascos de Sonhatus" width="1122" height="1402" loading="lazy" decoding="async" class="offer__image">
-          <h3 class="offer__title">Kit com 2 frascos</h3>
-          <p class="offer__desc">60 cápsulas no total. Um meio termo para quem quer testar por mais tempo.</p>
-          <p class="offer__from">De R$ 159,80 por</p>
-          <p class="offer__price">R$ 139,90</p>
-          <p class="offer__unit">R$ 69,95 por frasco</p>
-          <ul class="ticks offer__list">
-            <li class="tick"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>60 cápsulas</li>
-            <li class="tick"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>Valor por frasco menor que a unidade</li>
-          </ul>
-          <a href="[LINK_CHECKOUT_KIT_2]" class="btn btn--ghost btn--lg btn--block">QUERO MEU SONHATUS</a>
+          <img src="assets/img/2unidades.webp" alt="Kit com 2 frascos de Sonhatus" width="800" height="800" loading="lazy" decoding="async" class="offer__image">
+          <div class="offer__body">
+            <h3 class="offer__title">Kit com 2 frascos</h3>
+            <p class="offer__from">De R$ 159,80 por</p>
+            <p class="offer__price">R$ 139,90</p>
+            <p class="offer__unit">R$ 69,95 por frasco</p>
+            <ul class="ticks offer__list">
+              <li class="tick"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>60 cápsulas</li>
+              <li class="tick"><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>Valor por frasco menor que a unidade</li>
+            </ul>
+            <a href="[LINK_CHECKOUT_KIT_2]" class="btn btn--ghost btn--lg btn--block">QUERO MEU SONHATUS</a>
+          </div>
         </article>
 
       </div>
@@ -387,27 +410,27 @@
   <!-- DECISÃO -->
   <section id="decisao" class="section">
     <div class="shell flex justify-center">
-      <div class="panel reveal md:w-1/2">
+      <div class="panel panel--fill reveal md:w-1/2">
         <h2 class="h2">Qual <span class="text-highlight">opção escolher?</span></h2>
         <p class="body mt-5">
-          Não existe opção certa para todo mundo. Existe a que combina com o seu momento e com a forma
-          como você prefere comprar.
+          Não existe escolha certa pra todo mundo. Existe a que combina com o seu momento e com o
+          jeito que você prefere comprar.
         </p>
-        <ul class="ticks ticks--stacked mt-7">
+        <ul class="ticks ticks--stacked mt-12">
           <li class="tick">
             <svg class="icon" aria-hidden="true"><use href="#i-bottle"></use></svg>
             <strong>1 frasco</strong>
-            <span>para conhecer o produto com o menor investimento inicial.</span>
+            <span>pra conhecer o produto sem precisar se comprometer de cara.</span>
           </li>
           <li class="tick">
             <svg class="icon" aria-hidden="true"><use href="#i-bottle"></use></svg>
             <strong>2 frascos</strong>
-            <span>para acompanhar a rotina por mais tempo com valor menor por unidade.</span>
+            <span>pra acompanhar a rotina por mais tempo pagando menos por frasco.</span>
           </li>
           <li class="tick tick--best">
             <svg class="icon" aria-hidden="true"><use href="#i-bottle"></use></svg>
             <strong>3 frascos</strong>
-            <span>para quem já decidiu manter o ritual e quer o melhor valor proporcional.</span>
+            <span>pra quem já decidiu manter o ritual e quer o melhor custo por frasco.</span>
           </li>
         </ul>
         <a href="#oferta" class="btn btn--primary btn--lg btn--glow mt-9">QUERO MEU SONHATUS</a>
@@ -418,17 +441,17 @@
   <!-- TRANSPARÊNCIA -->
   <section id="transparencia" class="section">
     <div class="shell shell--narrow">
-      <div class="panel panel--soft reveal">
+      <div class="panel panel--soft panel--fill reveal">
         <span class="icon-badge"><svg class="icon icon--lg" aria-hidden="true"><use href="#i-shield"></use></svg></span>
         <h2 class="h2">Transparência <span class="text-highlight">antes da compra.</span></h2>
         <p class="body mt-5">
-          <strong><em>SONHATUS</em></strong> é um suplemento alimentar e não é medicamento. A comunicação desta página não deve ser
-          interpretada como promessa de prevenção, tratamento ou cura de doenças.
+          <strong><em>SONHATUS</em></strong> é um suplemento alimentar e não é medicamento. Nada aqui deve ser
+          interpretado como promessa de prevenção, tratamento ou cura de doenças.
         </p>
         <p class="body mt-4">
-          Antes de comprar, consulte a composição completa, as recomendações de consumo, as advertências e
-          as demais informações presentes no rótulo. Pessoas que utilizam medicamentos ou possuem alguma
-          condição de saúde devem buscar orientação profissional antes do consumo.
+          Antes de decidir, dê uma olhada na composição completa, nas recomendações de consumo e nas
+          advertências do rótulo. Se você usa algum medicamento ou tem alguma condição de saúde,
+          converse com um profissional antes de consumir.
         </p>
         <a href="#oferta" class="btn btn--primary btn--lg btn--glow mt-8">QUERO MEU SONHATUS</a>
       </div>
@@ -534,7 +557,7 @@
             </button>
           </h3>
           <div class="faq__panel" id="faq-8" role="region" aria-labelledby="faq-8-btn">
-            <p>A composição está disponível nesta página e também no rótulo do produto.</p>
+            <p>A composição completa está disponível aqui e também no rótulo do produto.</p>
           </div>
         </div>
 
@@ -553,7 +576,7 @@
         <h2 class="h2">Faça da noite um ritual <span class="text-highlight">que cabe na sua rotina.</span></h2>
         <p class="body body--center mt-5">
           Escolha 1, 2 ou 3 frascos e leve <strong><em>Sonhatus</em></strong> para o seu momento da noite. A decisão é simples,
-          e é isso que faz ela durar.
+          e é isso que faz ela durar de verdade.
         </p>
         <a href="#oferta" class="btn btn--primary btn--lg btn--glow mt-9">QUERO MEU SONHATUS</a>
         <p class="note mt-6">Suplemento alimentar. Consulte o rótulo para orientações e advertências.</p>
