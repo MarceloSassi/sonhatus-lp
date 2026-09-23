@@ -997,6 +997,36 @@ a {
   will-change: auto;
 }
 
+/* Hero: entrada por CSS, sem esperar o JS, para não atrasar FCP e LCP */
+.enter {
+  animation: enter .9s var(--ease-out) both;
+}
+
+.enter--d1 {
+  animation-delay: .05s;
+}
+
+.enter--d2 {
+  animation-delay: .1s;
+}
+
+.enter--d3 {
+  animation-delay: .15s;
+}
+
+.enter.btn--lg {
+  animation-name: enter, breathe;
+  animation-duration: .9s, 2.8s;
+  animation-timing-function: var(--ease-out), ease-in-out;
+  animation-iteration-count: 1, infinite;
+  animation-fill-mode: both, none;
+}
+
+@keyframes enter {
+  from { opacity: 0; transform: translate3d(0, 28px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
 @keyframes breathe {
   0%, 100% { scale: 1; }
   50% { scale: .9; }
@@ -1142,7 +1172,9 @@ a {
 
   .btn--lg,
   .btn--glow::after,
-  .sky-star {
+  .sky-star,
+  .enter,
+  .enter.btn--lg {
     animation: none;
   }
 

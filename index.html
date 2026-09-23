@@ -15,11 +15,11 @@
 
 <link rel="preload" as="image" href="assets/img/background-mobile.webp" media="(max-width: 767px)">
 <link rel="preload" as="image" href="assets/img/background-desktop.webp" media="(min-width: 768px)">
-<link rel="preload" as="image" href="assets/img/frasco.webp" fetchpriority="high">
+<link rel="preload" as="image" href="assets/img/frasco-540.webp" imagesrcset="assets/img/frasco-540.webp 540w, assets/img/frasco.webp 894w" imagesizes="(min-width: 1024px) 420px, 180px" fetchpriority="high">
+<link rel="modulepreload" href="assets/js/main.js">
 
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="assets/js/tailwind.config.js"></script>
 <link rel="stylesheet" href="assets/css/main.css">
+<link rel="stylesheet" href="assets/css/tailwind.css">
 </head>
 
 <body class="antialiased text-ink-100">
@@ -76,8 +76,10 @@
   <section id="hero" class="section section--hero">
     <div class="shell grid gap-6 lg:grid-cols-12 lg:items-center lg:gap-14">
 
-      <figure class="order-1 lg:order-2 lg:col-span-5 hero-figure reveal">
-        <img src="assets/img/frasco.webp"
+      <figure class="order-1 lg:order-2 lg:col-span-5 hero-figure enter">
+        <img src="assets/img/frasco-540.webp"
+             srcset="assets/img/frasco-540.webp 540w, assets/img/frasco.webp 894w"
+             sizes="(min-width: 1024px) 420px, 180px"
              alt="Frasco de SONHATUS com 30 cápsulas"
              width="894" height="1229"
              loading="eager" fetchpriority="high" decoding="async"
@@ -85,20 +87,20 @@
       </figure>
 
       <div class="order-2 lg:order-1 lg:col-span-7 hero-copy">
-        <h1 class="display reveal">De volta às noites <span class="text-highlight">mais tranquilas.</span></h1>
-        <p class="lede mt-5 reveal reveal--d1">
+        <h1 class="display enter">De volta às noites <span class="text-highlight">mais tranquilas.</span></h1>
+        <p class="lede mt-5 enter enter--d1">
           Melatonina, magnésio, L-triptofano e vitaminas B3, B6 e B12 em uma cápsula só.
         </p>
 
-        <a href="#oferta" class="btn btn--primary btn--lg btn--glow mt-6 reveal reveal--d2">QUERO MEU SONHATUS</a>
+        <a href="#oferta" class="btn btn--primary btn--lg btn--glow mt-6 enter enter--d2">QUERO MEU SONHATUS</a>
 
-        <ul class="hero-marks mt-14 reveal reveal--d3">
+        <ul class="hero-marks mt-14 enter enter--d3">
           <li class="hero-mark"><svg class="icon" aria-hidden="true"><use href="#i-capsule"></use></svg>30 cápsulas por frasco</li>
           <li class="hero-mark"><svg class="icon" aria-hidden="true"><use href="#i-list"></use></svg>Tudo em uma única cápsula</li>
           <li class="hero-mark"><svg class="icon" aria-hidden="true"><use href="#i-moon"></use></svg>Feito para o momento em que o dia desacelera</li>
         </ul>
 
-        <p class="note mt-6 reveal reveal--d3">Suplemento alimentar. Leia as orientações de consumo e advertências do produto.</p>
+        <p class="note mt-6 enter enter--d3">Suplemento alimentar. Leia as orientações de consumo e advertências do produto.</p>
       </div>
 
     </div>

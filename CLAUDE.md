@@ -11,7 +11,9 @@ Elementor. Objetivo único: levar o visitante à seção de oferta e ao checkout
 ## Stack
 
 HTML semântico, CSS puro em `assets/css/main.css`, JavaScript vanilla em ES modules.
-Tailwind via CDN apenas para layout e espaçamento, com tokens em `assets/js/tailwind.config.js`.
+Tailwind apenas para layout e espaçamento, compilado em `assets/css/tailwind.css` a partir de
+`assets/js/tailwind.config.js`. Ao usar uma classe Tailwind nova no HTML, recompilar:
+`npx tailwindcss@3 -c assets/js/tailwind.config.js -o assets/css/tailwind.css --minify`.
 Sem frameworks, sem bibliotecas externas, sem dependências novas sem justificativa explícita de peso.
 
 ## Estrutura
@@ -19,7 +21,8 @@ Sem frameworks, sem bibliotecas externas, sem dependências novas sem justificat
 ```
 index.html                      marcação e conteúdo
 assets/css/main.css             tokens, céu fixo, liquid glass, componentes, animações
-assets/js/tailwind.config.js    paleta e tipografia do Tailwind
+assets/css/tailwind.css         utilitários Tailwind compilados (gerado, não editar à mão)
+assets/js/tailwind.config.js    paleta e tipografia do Tailwind (usado só na compilação)
 assets/js/main.js               entrada
 assets/js/reveal.js             revelação por scroll (IntersectionObserver)
 assets/js/faq.js                acordeão acessível
@@ -80,7 +83,7 @@ Na dúvida sobre uma frase, sinalizar em vez de publicar.
 Metas: LCP abaixo de 2,5s, CLS abaixo de 0,1.
 Imagem do produto é o LCP: manter `loading="eager"` e `fetchpriority="high"`, nunca `lazy`.
 Fundos devem ir para WebP ou AVIF antes do deploy.
-Antes de produção, substituir o CDN do Tailwind pelo CSS compilado e minificado.
+O hero entra por animação CSS (`.enter`), não pelo `reveal.js`, para não atrasar FCP e LCP.
 
 ## Estilo de resposta
 
